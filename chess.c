@@ -19,13 +19,13 @@ char board[8][8] = {
 
 void display();
 void change( int , int , int , int ) ;
-void pawn(int , int ) ;
-void rook(int , int ) ;
-void horse(int , int ) ;
-void camel( int , int ) ;
-void king( int , int ) ;
-void queen( int , int ) ;
-void pawnb( int , int ) ;
+void peao(int , int ) ;
+void torre(int , int ) ;
+void cavalo(int , int ) ;
+void bispo( int , int ) ;
+void rei( int , int ) ;
+void rainha( int , int ) ;
+void peaob( int , int ) ;
 void player1();
 void player2();
 int check(int , int ) ;
@@ -59,7 +59,7 @@ char ch ;
      player1();
  }
 
- printf( " \n\nAperte ENTER pra continuar! \n\n " ) ;
+ printf( " \n\nAperte ENTER pra continuar! \n\n ", setlocale(LC_ALL,NULL) ) ;
 
  ch = getch();
  }while( ch == 13 ) ;
@@ -97,7 +97,7 @@ void change( int r1 , int c1 , int r2 , int c2 )
 
 }
 
-void pawn( int r1 , int c1 ) // paido
+void peao( int r1 , int c1 ) // paido
 {
     pwstatus[c1]++;
 
@@ -126,7 +126,7 @@ void pawn( int r1 , int c1 ) // paido
 
 }
 
-void rook( int r1 , int c1 )
+void torre( int r1 , int c1 )
 {
     int i , j , n ;
 
@@ -172,7 +172,7 @@ void rook( int r1 , int c1 )
 
 }
 
-void horse( int r1 , int c1 )
+void cavalo( int r1 , int c1 )
 {
     printf( "Espaços disponíveis: " ) ;
 
@@ -201,7 +201,7 @@ void horse( int r1 , int c1 )
 }
 
 
-void camel( int r1 , int c1 )
+void bispo( int r1 , int c1 )
 {
     int a , b , c , d ;
     printf( "Espaços disponíveis: \n" ) ;
@@ -252,7 +252,7 @@ void camel( int r1 , int c1 )
 
 }
 
-void king( int r1 , int c1 )
+void rei( int r1 , int c1 )
 {
     printf( "Espaços disponíveis: " ) ;
     if( board[r1][c1+1] == ' ' ) printf( "%d%d , " , r1 , c1+1 ) ;
@@ -272,7 +272,7 @@ void king( int r1 , int c1 )
     if( board[r1+1][c1-1] == ' ' ) printf( "%d%d , " , r1+1 , c1-1 ) ;
 }
 
-void queen( int r1 , int c1 )
+void rainha( int r1 , int c1 )
 {
     int x=1 , y=1 , a , b ;
     printf( "Espaços disponíveis: " ) ;
@@ -362,7 +362,7 @@ void queen( int r1 , int c1 )
 
 }
 
-void pawnb( int r1 , int c1 ) // paido black
+void peaob( int r1 , int c1 ) // paido black
 {
     pbstatus[c1]++;
 
@@ -405,17 +405,17 @@ void player1()
 
     switch( board[r1][c1] )
     {
-        case 'P': pawn( r1 , c1 );
+        case 'P': peao( r1 , c1 );
                   break ;
-        case 'R': rook( r1 , c1 ) ;
+        case 'R': torre( r1 , c1 ) ;
                   break ;
-        case 'H': horse( r1 , c1 );
+        case 'H': cavalo( r1 , c1 );
                   break ;
-        case 'C': camel( r1 , c1 );
+        case 'C': bispo( r1 , c1 );
                   break ;
-        case 'K': king( r1 , c1 ) ;
+        case 'K': rei( r1 , c1 ) ;
                   break ;
-        case 'Q': queen( r1 , c1 ) ;
+        case 'Q': rainha( r1 , c1 ) ;
                   break ;
         default: printf("Posição invalida ! ") ; goto again1 ;
     }
@@ -444,17 +444,17 @@ void player2()
 
     switch( board[r1][c1] )
     {
-        case 'p': pawnb( r1 , c1 ) ;
+        case 'p': peaob( r1 , c1 ) ;
                   break ;
-        case 'r': rook( r1 , c1 ) ;
+        case 'r': torre( r1 , c1 ) ;
                   break ;
-        case 'h': horse( r1 , c1 ) ;
+        case 'h': cavalo( r1 , c1 ) ;
                   break ;
-        case 'c': camel( r1 , c1 ) ;
+        case 'c': bispo( r1 , c1 ) ;
                   break ;
-        case 'k': king( r1 , c1 ) ;
+        case 'k': rei( r1 , c1 ) ;
                   break ;
-        case 'q': queen( r1 , c1 ) ;
+        case 'q': rainha( r1 , c1 ) ;
                   break ;
         default: printf( "Posição ínvalida ! " ) ; goto again2 ;
     }
